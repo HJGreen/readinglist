@@ -10,7 +10,7 @@ const NavigationLink = styled.a`
 
   &:after {
     content: '';
-    display: ${props => props.active ? 'block' : 'none'};
+    visibility: ${props => props.active ? 'visible' : 'hidden'};
     width: 4px;
     height: 4px;
     border-radius: 100%;
@@ -28,8 +28,10 @@ const NavigationItem = ({ children, href, active }) => (
 
 const NavigationMenu = styled.ul`
   display: flex;
-  list-style: none;
+  height: 48px;
   justify-content: space-around;
+  align-items: center;
+  list-style: none;
   margin: 0;
   padding: 0;
 `
