@@ -2,14 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NavigationLink = styled.a`
+  position: relative;
   text-decoration: none;
   color: #000;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  font-weight: 600;
+  padding: 0 1rem;
+  height: 48px;
 
   &:after {
     content: '';
+    position: absolute;
+    text-align: center;
+    bottom: 10px;
     visibility: ${props => props.active ? 'visible' : 'hidden'};
     width: 4px;
     height: 4px;
@@ -42,9 +49,9 @@ const AddButton = styled.button`
   width: 48px;
   height: 48px;
   color: #fff;
-  font-size: 20px;
-  line-height: 48px;
-  font-family: 'Roboto Mono';
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const NavigationBar = () => {
@@ -55,7 +62,9 @@ const NavigationBar = () => {
         <NavigationItem href="#wishlist">wishlist</NavigationItem>
         <NavigationItem href="#discover">discover</NavigationItem>
       </NavigationMenu>
-      <AddButton>+</AddButton>
+      <AddButton>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32"   fill="currentColor"><path d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"/></svg>
+      </AddButton>
     </nav>
   );
 };
