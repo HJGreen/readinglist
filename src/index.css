@@ -1,5 +1,28 @@
+@font-face {
+  font-family: 'Archivo';
+  src: local('Archivo'), url(./fonts/Archivo-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: local('Archivo'), url(./fonts/Archivo-Medium.ttf) format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: local('Archivo'), url(./fonts/Archivo-SemiBold.ttf) format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: local('Archivo'), url(./fonts/Archivo-Bold.ttf) format('truetype');
+  font-weight: 700;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto Mono', 'Hack', monospace;
+  font-family: 'Archivo', sans-serif;
 }
