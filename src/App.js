@@ -15,7 +15,10 @@ const Pane = styled.section`
 `
 
 const books = [
-  {author: "Kurt Vonnegut", title: "Slaughterhouse 5"}
+  { author: "Kurt Vonnegut", title: "Slaughterhouse 5" },
+  { author: "James Gleick", title: "Chaos" },
+  { author: "Daniel Higginbotham", title: "Clojure for the Brave and True" },
+  { author: "Brandon Sanderson", title: "The Final Empire" },
 ]
 
 class App extends Component {
@@ -23,7 +26,7 @@ class App extends Component {
     return (
       <AppContainer>
         <Pane>
-          <List items={books}/>
+          <List items={books} />
         </Pane>
         <NavigationBar />
       </AppContainer>

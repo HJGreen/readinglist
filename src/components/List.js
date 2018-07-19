@@ -3,14 +3,25 @@ import styled from 'styled-components';
 
 const ListContainer = styled.ul`
   list-style: none;
-  padding: 0;
+  padding: 1rem;
   margin: 0;
 `;
 
+const ListTitle = styled.p`
+  font-weight: 600;
+  margin: 0 0 0.15rem;
+`
+
+const ListSubTitle = styled.p`
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin: 0 0 1rem;
+`
+
 const ListItem = ({ title, author }) => (
   <li>
-    <div>{title}</div>
-    <div>{author}</div>
+    <ListTitle>{title}</ListTitle>
+    <ListSubTitle>{author}</ListSubTitle>
   </li>
 );
 
