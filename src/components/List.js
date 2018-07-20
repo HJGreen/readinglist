@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ListContainer = styled.ul`
   list-style: none;
-  padding: 1rem;
+  padding: 0 1rem;
   margin: 0;
 `;
 
@@ -15,15 +15,22 @@ const ListTitle = styled.p`
 const ListSubTitle = styled.p`
   font-size: 0.875rem;
   font-weight: 400;
-  margin: 0 0 1rem;
+  margin: 0;
 `
 
+const StyledListItem = styled.li`
+  padding: 0.5rem 0;
+`;
+
+
 const ListItem = ({ title, author }) => (
-  <li>
+  <StyledListItem>
     <ListTitle>{title}</ListTitle>
     <ListSubTitle>{author}</ListSubTitle>
-  </li>
+  </StyledListItem>
 );
+
+
 
 const List = ({ items }) => {
   return (

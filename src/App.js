@@ -6,6 +6,7 @@ import List from './components/List';
 const AppContainer = styled.main`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: stretch;
   width: 100vw;
   height: 100vh;
