@@ -26,7 +26,7 @@ const InputGroupContainer = styled.div`
 const InputGroup = ({ label, children }) => (
   <InputGroupContainer>
     <InputGroupLabel>
-      { label }
+      {label}
       {children}
     </InputGroupLabel>
   </InputGroupContainer>
@@ -55,21 +55,44 @@ const InputCheck = styled.input`
   height: 1.5rem;
   margin: 0.5rem 0 0;
 
-  &:checked {
-    background-color: #666;
-    border-color: #666;
-    box-shadow: inset 0 0 0px 1px #000;
-  }
 
   &:focus {
     outline: none;
-    // border-color: #ccc;
+    border-color: #666;
   }
+  
+  &:checked {
+    background-color: #333;
+    border-color: #333;
+    box-shadow: inset 0 0 0px 1px #000;
+  }
+
 `
+
+const Button = styled.button`
+  padding: 0.75em 0 0.6em;
+  font-family: 'Archivo', sans-serif;
+  background: #222;
+  color: #ccc;
+  border: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px #000;
+  border: 1px solid #222;
+
+  &:focus {
+    background: #fff;
+    color: #333;
+    border-color: #fff;
+    outline: none;
+  }
+`;
 
 const AddForm = () => {
   return (
-    <Form>
+    <Form action="#">
       <InputGroup label="Title">
         <InputText type="text" />
       </InputGroup>
@@ -79,6 +102,7 @@ const AddForm = () => {
       <InputGroup label="Read?">
         <InputCheck type="checkbox" />
       </InputGroup>
+      <Button>Save</Button>
     </Form>
   )
 }
