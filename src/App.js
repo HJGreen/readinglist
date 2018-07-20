@@ -11,7 +11,8 @@ const AppContainer = styled.main`
   height: 100vh;
 `
 const Pane = styled.section`
-  flex: 1 0 auto;
+  flex: 0 1 auto;
+  overflow-y: auto;
 `
 
 const books = [
