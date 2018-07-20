@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import NavigationBar from './components/NavigationBar';
 import styled from 'styled-components';
+
+import NavigationBar from './components/NavigationBar';
 import List from './components/List';
+import AddForm from './components/AddForm'; 
 
 const AppContainer = styled.main`
   display: flex;
@@ -29,6 +31,7 @@ class App extends Component {
       <AppContainer>
         <Pane>
           <List items={books} />
+          <AddForm/>
         </Pane>
         <NavigationBar />
       </AppContainer>
