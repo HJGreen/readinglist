@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import NavigationBar from './components/NavigationBar';
 import styled from 'styled-components';
 import List from './components/List';
@@ -26,12 +28,20 @@ const books = [
 class App extends Component {
   render() {
     return (
-      <AppContainer>
-        <Pane>
-          <List items={books} />
-        </Pane>
-        <NavigationBar />
-      </AppContainer>
+      <Router>
+        <AppContainer>
+          <Pane>
+            <Switch>
+              <Route exact path="/">
+                <List items={books} />
+              </Route>
+              <Route exact path="/add">
+              </Route>
+            </Switch>
+          </Pane>
+          <NavigationBar />
+        </AppContainer>
+      </Router>
     );
   }
 }
