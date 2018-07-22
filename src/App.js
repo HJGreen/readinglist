@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 
 import NavigationBar from './components/NavigationBar';
@@ -28,13 +29,21 @@ const books = [
 class App extends Component {
   render() {
     return (
-      <AppContainer>
-        <Pane>
-          <List items={books} />
-          <AddForm/>
-        </Pane>
-        <NavigationBar />
-      </AppContainer>
+      <Router>
+        <AppContainer>
+          <Pane>
+            <Switch>
+              <Route exact path="/">
+                <List items={books} />
+              </Route>
+              <Route exact path="/add">
+                <AddForm />
+              </Route>
+            </Switch>
+          </Pane>
+          <NavigationBar />
+        </AppContainer>
+      </Router>
     );
   }
 }
