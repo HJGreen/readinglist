@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
-import NavigationBar from './components/NavigationBar';
-import styled from 'styled-components';
-import List from './components/List';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NavigationBar from "./components/NavigationBar";
+import styled from "styled-components";
+import List from "./components/List";
+import books from "./data/books";
 
 const AppContainer = styled.main`
   display: flex;
@@ -12,38 +12,69 @@ const AppContainer = styled.main`
   align-items: stretch;
   width: 100vw;
   height: 100vh;
-`
-const Pane = styled.section`
-  flex: 0 1 auto;
-  overflow-y: auto;
-`
+`;
 
-const books = [
-  { author: "Kurt Vonnegut", title: "Slaughterhouse 5" },
-  { author: "James Gleick", title: "Chaos" },
-  { author: "Daniel Higginbotham", title: "Clojure for the Brave and True" },
-  { author: "Brandon Sanderson", title: "The Final Empire" },
-]
+const Pane = styled.section`
+  flex: 1 0 auto;
+`;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      books: {}
+    };
+  }
+
+  componentDidMount() {
+    localStorage.setItem("books", JSON.stringify(books));
+
+    const localBooks = localStorage.getItem("books");
+
+    if (localBooks) {
+      this.setState({ books: JSON.parse(localBooks) });
+    }
+  }
+
   render() {
+    const { books } = this.state;
+    console.log(books);
+
     return (
       <Router>
         <AppContainer>
           <Pane>
             <Switch>
               <Route exact path="/">
-                <List items={books} />
+                <List items={books.finished} />
               </Route>
-              <Route exact path="/add">
-              </Route>
+              <Route exact path="/add" />
             </Switch>
           </Pane>
-          <NavigationBar />
+          <NavigationBar addNewBook={this.addNewBook} />
         </AppContainer>
       </Router>
     );
   }
+
+  addNewBook = ({ title, author, date_started, date_finished }) => {
+    const existingBooks = this.state.books.finished || {};
+
+    this.setState({
+      books: {
+        finished: [
+          ...existingBooks,
+          {
+            title: title,
+            author: author,
+            date_started: date_started,
+            date_finished: date_finished
+          }
+        ]
+      }
+    });
+  };
 }
 
 export default App;
