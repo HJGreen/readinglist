@@ -6,16 +6,17 @@ import List from "./components/List";
 import books from "./data/books";
 
 const AppContainer = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
+  display: grid;
+  grid-template-rows: 1fr auto;
   width: 100vw;
   height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
 `;
 
 const Pane = styled.section`
-  flex: 1 0 auto;
+  flex: 0 0 auto;
+  overflow-y: auto;
 `;
 
 class App extends Component {
