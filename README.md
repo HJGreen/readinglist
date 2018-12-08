@@ -8,10 +8,10 @@ A simple web application for tracking your reading history. Built with React.
 {
   "finished": [
     {
-      "title": string,
-      "author": string,
-      "date_started": datetime,
-      "date_finished": datetime
+      "title": "string",
+      "author": "string",
+      "date_started": "datetime",
+      "date_finished": "datetime"
     }
   ]
 }
