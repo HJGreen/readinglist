@@ -20,7 +20,7 @@ const ListTitle = styled.p`
 const ListSubTitle = styled.p`
   font-size: 0.875rem;
   font-weight: 400;
-  margin: 0 0 1rem;
+  margin: 0;
 `;
 
 const StyledListItem = styled.li`
