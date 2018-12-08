@@ -18,6 +18,8 @@ const AppContainer = styled.main`
 `;
 
 const Pane = styled.section`
+  display: flex;
+  flex-direction: column;
   flex: 0 0 auto;
   overflow-y: auto;
 `;

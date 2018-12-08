@@ -8,6 +8,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  flex: 1 0 auto;
 `;
 
 const InputGroupLabel = styled.label`
