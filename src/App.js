@@ -40,7 +40,6 @@ class App extends Component {
 
   render() {
     const { books } = this.state;
-    console.log(books);
 
     return (
       <Router>
