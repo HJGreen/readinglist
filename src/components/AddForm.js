@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { Redirect } from "react-router-dom";
 
 const Form = styled.form`
   background: #000;
@@ -17,11 +18,11 @@ const InputGroupLabel = styled.label`
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-`
+`;
 
 const InputGroupContainer = styled.div`
   margin-bottom: 1rem;
-`
+`;
 
 const InputGroup = ({ label, children }) => (
   <InputGroupContainer>
@@ -39,14 +40,14 @@ const InputText = styled.input`
   color: #fff;
   padding: 0.5rem 0 0.25rem;
   font-size: 1rem;
-  font-family: 'Archivo', sans-serif;
+  font-family: "Archivo", sans-serif;
   transition: border-color 0.1s ease;
 
   &:focus {
     outline: none;
-    border-color: #fff; 
+    border-color: #fff;
   }
-`
+`;
 
 const InputCheck = styled.input`
   border: 1px solid #333;
@@ -55,23 +56,21 @@ const InputCheck = styled.input`
   height: 1.5rem;
   margin: 0.5rem 0 0;
 
-
   &:focus {
     outline: none;
     border-color: #666;
   }
-  
+
   &:checked {
     background-color: #333;
     border-color: #333;
     box-shadow: inset 0 0 0px 1px #000;
   }
-
-`
+`;
 
 const Button = styled.button`
   padding: 0.75em 0 0.6em;
-  font-family: 'Archivo', sans-serif;
+  font-family: "Archivo", sans-serif;
   background: #222;
   color: #ccc;
   border: none;
@@ -90,21 +89,74 @@ const Button = styled.button`
   }
 `;
 
-const AddForm = () => {
-  return (
-    <Form action="#">
-      <InputGroup label="Title">
-        <InputText type="text" />
-      </InputGroup>
-      <InputGroup label="Author">
-        <InputText type="text" />
-      </InputGroup>
-      <InputGroup label="Read?">
-        <InputCheck type="checkbox" />
-      </InputGroup>
-      <Button>Save</Button>
-    </Form>
-  )
+class AddForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      author: "",
+      read: false,
+      submitted: false
+    };
+  }
+
+  handleSubmit = evt => {
+    evt.preventDefault();
+    const { addNewBook } = this.props;
+
+    addNewBook({ title: this.state.title, author: this.state.author });
+
+    this.setState(prevState => ({
+      ...prevState,
+      submitted: true
+    }));
+  };
+
+  handleChange = (evt, a) => {
+    const { name, value } = evt.currentTarget;
+    this.setState(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  render() {
+    const { author, title, read, submitted } = this.state;
+
+    if (submitted) {
+      return <Redirect to="/" />;
+    }
+
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <InputGroup label="Title">
+          <InputText
+            type="text"
+            name="title"
+            value={title}
+            onChange={this.handleChange}
+          />
+        </InputGroup>
+        <InputGroup label="Author">
+          <InputText
+            type="text"
+            name="author"
+            value={author}
+            onChange={this.handleChange}
+          />
+        </InputGroup>
+        <InputGroup label="Read?">
+          <InputCheck
+            type="checkbox"
+            name="read"
+            value={read}
+            onChange={this.handleChange}
+          />
+        </InputGroup>
+        <Button>Save</Button>
+      </Form>
+    );
+  }
 }
 
 export default AddForm;
