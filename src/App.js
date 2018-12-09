@@ -6,6 +6,8 @@ import NavigationBar from "./components/NavigationBar";
 import List from "./components/List";
 import AddForm from "./components/AddForm";
 
+import store from "./store";
+
 const AppContainer = styled.main`
   display: grid;
   grid-template-rows: 1fr auto;
@@ -29,6 +31,8 @@ class App extends Component {
     this.state = {
       books: {}
     };
+
+    this.addNewBook = store.action("addBook");
   }
 
   componentDidMount() {
@@ -37,6 +41,8 @@ class App extends Component {
     if (localBooks) {
       this.setState({ books: JSON.parse(localBooks) });
     }
+
+    store.subscribe(newState => this.setState(newState));
   }
 
   render() {
@@ -48,7 +54,7 @@ class App extends Component {
           <Pane>
             <Switch>
               <Route exact path="/">
-                <List items={books.finished} />
+                <List items={Object.entries(books.byId || {})} />
               </Route>
               <Route exact path="/add">
                 <AddForm addNewBook={this.addNewBook} />
@@ -60,27 +66,6 @@ class App extends Component {
       </Router>
     );
   }
-
-  addNewBook = ({ title, author, date_started, date_finished }) => {
-    const existingBooks = this.state.books.finished || {};
-
-    this.setState(
-      {
-        books: {
-          finished: [
-            ...existingBooks,
-            {
-              title: title,
-              author: author,
-              date_started: date_started,
-              date_finished: date_finished
-            }
-          ]
-        }
-      },
-      this.saveStateToLocalStorage
-    );
-  };
 
   saveStateToLocalStorage = () => {
     const { books } = this.state;

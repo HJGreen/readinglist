@@ -42,7 +42,7 @@ const List = ({ items }) => {
   return (
     <ListContainer>
       {items.map(item => (
-        <ListItem {...item} />
+        <ListItem key={item[0]} {...item[1]} />
       ))}
     </ListContainer>
   );

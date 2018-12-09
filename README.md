@@ -6,13 +6,16 @@ A simple web application for tracking your reading history. Built with React.
 
 ```json
 {
-  "finished": [
-    {
-      "title": "string",
-      "author": "string",
-      "date_started": "datetime",
-      "date_finished": "datetime"
-    }
-  ]
+  "books": {
+    "byId": {
+      1: {
+        "title": "string",
+        "author": "string",
+        "date_started": "datetime",
+        "date_finished": "datetime"
+      }
+    },
+    "allIds": [1]
+  }
 }
 ```
