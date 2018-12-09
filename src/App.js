@@ -6,8 +6,6 @@ import NavigationBar from "./components/NavigationBar";
 import List from "./components/List";
 import AddForm from "./components/AddForm";
 
-import books from "./data/books";
-
 const AppContainer = styled.main`
   display: grid;
   grid-template-rows: 1fr auto;
@@ -34,8 +32,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    localStorage.setItem("books", JSON.stringify(books));
-
     const localBooks = localStorage.getItem("books");
 
     if (localBooks) {
@@ -68,19 +64,27 @@ class App extends Component {
   addNewBook = ({ title, author, date_started, date_finished }) => {
     const existingBooks = this.state.books.finished || {};
 
-    this.setState({
-      books: {
-        finished: [
-          ...existingBooks,
-          {
-            title: title,
-            author: author,
-            date_started: date_started,
-            date_finished: date_finished
-          }
-        ]
-      }
-    });
+    this.setState(
+      {
+        books: {
+          finished: [
+            ...existingBooks,
+            {
+              title: title,
+              author: author,
+              date_started: date_started,
+              date_finished: date_finished
+            }
+          ]
+        }
+      },
+      this.saveStateToLocalStorage
+    );
+  };
+
+  saveStateToLocalStorage = () => {
+    const { books } = this.state;
+    localStorage.setItem("books", JSON.stringify(books));
   };
 }
 
