@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 
 const Form = styled.form`
   background: #000;
-  padding: 2rem 4rem;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: stretch;
