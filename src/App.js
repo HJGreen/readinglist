@@ -33,6 +33,7 @@ class App extends Component {
     };
 
     this.addNewBook = store.action("addBook");
+    this.removeBook = store.action("removeBook");
   }
 
   componentDidMount() {
@@ -54,7 +55,10 @@ class App extends Component {
           <Pane>
             <Switch>
               <Route exact path="/">
-                <List items={Object.entries(books.byId || {})} />
+                <List
+                  items={Object.entries(books.byId || {})}
+                  removeListItem={this.removeBook}
+                />
               </Route>
               <Route exact path="/add">
                 <AddForm addNewBook={this.addNewBook} />

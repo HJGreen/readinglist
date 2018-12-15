@@ -22,6 +22,17 @@ store.registerActions(store => ({
         byId: Object.assign({}, books.byId, { [id]: book })
       }
     };
+  },
+  removeBook: ({ books }, bookId) => {
+    console.log(typeof books.allIds[0], typeof bookId);
+    return {
+      books: {
+        allIds: books.allIds.filter(id => bookId != id),
+        byId: {
+          [bookId]: undefined
+        }
+      }
+    };
   }
 }));
 

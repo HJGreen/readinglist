@@ -27,14 +27,17 @@ const StyledListItem = styled.li`
   padding: 0.5rem 0;
 `;
 
-const ListItem = ({ title, author }) => (
+const ListItem = ({ title, author, onClick }) => (
   <StyledListItem>
     <ListTitle>{title}</ListTitle>
     <ListSubTitle>{author}</ListSubTitle>
+    <button type="button" onClick={onClick}>
+      &times;
+    </button>
   </StyledListItem>
 );
 
-const List = ({ items }) => {
+const List = ({ items, removeListItem }) => {
   if (!items) {
     return <ListEmptyState>No Books Found</ListEmptyState>;
   }
@@ -42,7 +45,13 @@ const List = ({ items }) => {
   return (
     <ListContainer>
       {items.map(item => (
-        <ListItem key={item[0]} {...item[1]} />
+        <ListItem
+          key={item[0]}
+          onClick={() => {
+            removeListItem(item[0]);
+          }}
+          {...item[1]}
+        />
       ))}
     </ListContainer>
   );
