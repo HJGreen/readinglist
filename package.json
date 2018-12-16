@@ -9,7 +9,8 @@
     "react-scripts": "1.1.4",
     "stockroom": "^1.0.1",
     "styled-components": "^3.3.3",
-    "unistore": "^3.1.0"
+    "unistore": "^3.1.0",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-app-rewired start",

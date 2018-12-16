@@ -1,37 +1,31 @@
 import createStore from "stockroom/worker";
+import uuidv1 from "uuid";
 
 let store = createStore();
 
-function hashCode(str) {
-  return str
-    .split("")
-    .reduce(
-      (prevHash, currVal) =>
-        ((prevHash << 5) - prevHash + currVal.charCodeAt(0)) | 0,
-      0
-    );
-}
-
 store.registerActions(store => ({
   addBook: ({ books }, book) => {
-    const id = hashCode(book.title);
+    const id = uuidv1();
 
     return {
       books: {
         allIds: [...books.allIds, id],
-        byId: Object.assign({}, books.byId, { [id]: book })
+        byId: {
+          [id]: book
+        }
       }
     };
   },
   removeBook: ({ books }, bookId) => {
-    console.log(typeof books.allIds[0], typeof bookId);
+    console.log(`Attempting to remove ${bookId}`);
+    const newBooks = Object.assign({}, books);
+    delete newBooks.byId[bookId];
+
+    newBooks.allIds = newBooks.allIds.filter(id => bookId !== id);
+    console.log(newBooks);
+
     return {
-      books: {
-        allIds: books.allIds.filter(id => bookId != id),
-        byId: {
-          [bookId]: undefined
-        }
-      }
+      books: newBooks
     };
   }
 }));

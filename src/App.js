@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
+import { Provider, connect } from "unistore/react";
 
 import NavigationBar from "./components/NavigationBar";
 import List from "./components/List";
@@ -24,57 +25,32 @@ const Pane = styled.section`
   overflow-y: auto;
 `;
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+const addNewBook = store.action("addBook");
+const removeBook = store.action("removeBook");
 
-    this.state = {
-      books: {}
-    };
+const App = connect("books")(({ books }) => (
+  <Router>
+    <AppContainer>
+      <Pane>
+        <Switch>
+          <Route exact path="/">
+            <List
+              items={Object.entries(books.byId || {})}
+              removeListItem={removeBook}
+            />
+          </Route>
+          <Route exact path="/add">
+            <AddForm addNewBook={addNewBook} />
+          </Route>
+        </Switch>
+      </Pane>
+      <NavigationBar />
+    </AppContainer>
+  </Router>
+));
 
-    this.addNewBook = store.action("addBook");
-    this.removeBook = store.action("removeBook");
-  }
-
-  componentDidMount() {
-    const localBooks = localStorage.getItem("books");
-
-    if (localBooks) {
-      this.setState({ books: JSON.parse(localBooks) });
-    }
-
-    store.subscribe(newState => this.setState(newState));
-  }
-
-  render() {
-    const { books } = this.state;
-
-    return (
-      <Router>
-        <AppContainer>
-          <Pane>
-            <Switch>
-              <Route exact path="/">
-                <List
-                  items={Object.entries(books.byId || {})}
-                  removeListItem={this.removeBook}
-                />
-              </Route>
-              <Route exact path="/add">
-                <AddForm addNewBook={this.addNewBook} />
-              </Route>
-            </Switch>
-          </Pane>
-          <NavigationBar />
-        </AppContainer>
-      </Router>
-    );
-  }
-
-  saveStateToLocalStorage = () => {
-    const { books } = this.state;
-    localStorage.setItem("books", JSON.stringify(books));
-  };
-}
-
-export default App;
+export default () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
