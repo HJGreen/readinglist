@@ -38,13 +38,15 @@ const ListItem = ({ title, author, onClick }) => (
 );
 
 const List = ({ items, removeListItem }) => {
-  if (!items) {
+  let entries = Object.entries(items);
+
+  if (!entries) {
     return <ListEmptyState>No Books Found</ListEmptyState>;
   }
 
   return (
     <ListContainer>
-      {items.map(item => (
+      {entries.map(item => (
         <ListItem
           key={item[0]}
           onClick={() => {
