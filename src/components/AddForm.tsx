@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, ChangeEvent, FormEvent } from "react";
 import styled from "styled-components";
 import { Redirect } from "react-router-dom";
+import { Book } from "../model/Book";
 
 const Form = styled.form`
   background: #000;
@@ -25,7 +26,12 @@ const InputGroupContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
-const InputGroup = ({ label, children }) => (
+type InputGroupProps = {
+  label: string;
+  children?: React.ReactNode;
+};
+
+const InputGroup: React.SFC<InputGroupProps> = ({ label, children }) => (
   <InputGroupContainer>
     <InputGroupLabel>
       {label}
@@ -90,18 +96,26 @@ const Button = styled.button`
   }
 `;
 
-class AddForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: "",
-      author: "",
-      read: false,
-      submitted: false
-    };
-  }
+type State = {
+  title: string;
+  author: string;
+  read: boolean;
+  submitted: boolean;
+};
 
-  handleSubmit = evt => {
+type Props = {
+  addNewBook: (book: Book) => void;
+};
+
+class AddForm extends Component<Props, State> {
+  state = {
+    title: "",
+    author: "",
+    read: false,
+    submitted: false
+  };
+
+  handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     const { addNewBook } = this.props;
 
@@ -113,7 +127,7 @@ class AddForm extends Component {
     }));
   };
 
-  handleChange = (evt, a) => {
+  handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.currentTarget;
     this.setState(prevState => ({
       ...prevState,
@@ -150,7 +164,7 @@ class AddForm extends Component {
           <InputCheck
             type="checkbox"
             name="read"
-            value={read}
+            value={`${read}`}
             onChange={this.handleChange}
           />
         </InputGroup>
