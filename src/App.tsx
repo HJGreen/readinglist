@@ -1,29 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import styled from "styled-components";
 import { Provider, Subscribe } from "unstated";
 import BookContainer from "./containers/BookContainer";
-import NavigationBar from "./components/NavigationBar";
+import Navigation from "./components/Navigation";
 import List from "./components/List";
 import AddForm from "./components/AddForm";
+import AppContainer from "./components/AppContainer";
+import Pane from "./components/Pane";
 
-const AppContainer = styled.main`
-  display: grid;
-  grid-template-rows: 1fr auto;
-  width: 100vw;
-  height: 100vh;
-  max-height: 100vh;
-  overflow: hidden;
-`;
-
-const Pane = styled.section`
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 auto;
-  overflow-y: auto;
-`;
-
-const App: React.FC = () => (
+const App: React.FunctionComponent = () => (
   <Provider>
     <Router>
       <AppContainer>
@@ -45,7 +30,10 @@ const App: React.FC = () => (
             </Route>
           </Switch>
         </Pane>
-        <NavigationBar />
+        <Navigation>
+          <Navigation.Item to="/">Shelf</Navigation.Item>
+          <Navigation.Button to="/add">Search</Navigation.Button>
+        </Navigation>
       </AppContainer>
     </Router>
   </Provider>
