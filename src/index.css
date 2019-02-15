@@ -1,32 +1,7 @@
-@font-face {
-  font-family: "Archivo";
-  font-display: fallback;
-  src: local("Archivo"), url(./fonts/Archivo-Regular.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Archivo";
-  font-display: fallback;
-  src: local("Archivo"), url(./fonts/Archivo-Medium.ttf) format("truetype");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Archivo";
-  font-display: fallback;
-  src: local("Archivo"), url(./fonts/Archivo-SemiBold.ttf) format("truetype");
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: "Archivo";
-  font-display: fallback;
-  src: local("Archivo"), url(./fonts/Archivo-Bold.ttf) format("truetype");
-  font-weight: 700;
-}
+@import url("./fonts/Inter/inter.css");
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Archivo", sans-serif;
+  font-family: "Inter", sans-serif;
 }
