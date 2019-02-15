@@ -40,14 +40,8 @@ const deleteProperty = ({ [key]: _, ...newObj }, key: string) => newObj;
 
 class BookContainer extends Container<IBookState> {
   state = {
-    byId: {
-      abc: {
-        id: "abc",
-        author: "Brandon Sanderson",
-        title: "The Final Empire"
-      }
-    },
-    allIds: ["abc"]
+    byId: {},
+    allIds: []
   };
 
   addBook = (book: IBook) => {
