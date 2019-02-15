@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import bookshelf from "../img/book-shelf.png";
 
-const ListEmptyState = styled.h3`
+const ListEmptyState = styled.h2`
   text-align: center;
   font-weight: 400;
 `;
@@ -27,7 +28,17 @@ const StyledListItem = styled.li`
   padding: 0.5rem 0;
 `;
 
-const ListItem = ({ title, author, onClick }) => (
+type ListItemProps = {
+  title: string;
+  author: string;
+  onClick: (event: React.MouseEvent<any, MouseEvent>) => void;
+};
+
+const ListItem: React.FunctionComponent<ListItemProps> = ({
+  title,
+  author,
+  onClick
+}) => (
   <StyledListItem>
     <ListTitle>{title}</ListTitle>
     <ListSubTitle>{author}</ListSubTitle>
@@ -37,11 +48,28 @@ const ListItem = ({ title, author, onClick }) => (
   </StyledListItem>
 );
 
-const List = ({ items, removeListItem }) => {
+type ListProps = {
+  items: Object;
+  removeListItem: (id: string) => void;
+};
+const List: React.FunctionComponent<ListProps> = ({
+  items,
+  removeListItem
+}) => {
   let entries = Object.entries(items);
 
-  if (!entries) {
-    return <ListEmptyState>No Books Found</ListEmptyState>;
+  if (!entries.length) {
+    return (
+      <section style={{ textAlign: "center" }}>
+        <img src={bookshelf} width="120" />
+        <ListEmptyState>Your shelf is empty</ListEmptyState>
+        <p>
+          Add some books using
+          <br />
+          the <strong>Search</strong> page below
+        </p>
+      </section>
+    );
   }
 
   return (
