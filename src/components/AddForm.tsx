@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { Book } from "../model/Book";
 
 const Form = styled.form`
-  background: #000;
+  background: #f2f2f2;
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
@@ -15,15 +15,15 @@ const Form = styled.form`
 const InputGroupLabel = styled.label`
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: #222;
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.075em;
   text-transform: uppercase;
 `;
 
 const InputGroupContainer = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 `;
 
 type InputGroupProps = {
@@ -31,7 +31,7 @@ type InputGroupProps = {
   children?: React.ReactNode;
 };
 
-const InputGroup: React.SFC<InputGroupProps> = ({ label, children }) => (
+const InputGroup: React.FC<InputGroupProps> = ({ label, children }) => (
   <InputGroupContainer>
     <InputGroupLabel>
       {label}
@@ -43,24 +43,24 @@ const InputGroup: React.SFC<InputGroupProps> = ({ label, children }) => (
 const InputText = styled.input`
   background: none;
   border: none;
-  border-bottom: 1px solid #333;
-  color: #fff;
-  padding: 0.5rem 0 0.25rem;
-  font-size: 1rem;
-  font-family: "Archivo", sans-serif;
+  border-bottom: 1px solid #999;
+  color: #222;
+  padding: 0.25rem 0 0.25rem;
+  font-size: 1.5rem;
+  font-family: inherit;
   transition: border-color 0.1s ease;
 
   &:focus {
     outline: none;
-    border-color: #fff;
+    border-color: #222;
   }
 `;
 
 const InputCheck = styled.input`
   border: 1px solid #333;
   appearance: none;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   margin: 0.5rem 0 0;
 
   &:focus {
@@ -71,22 +71,23 @@ const InputCheck = styled.input`
   &:checked {
     background-color: #333;
     border-color: #333;
-    box-shadow: inset 0 0 0px 1px #000;
+    box-shadow: inset 0 0 0px 1px #ccc;
   }
 `;
 
 const Button = styled.button`
-  padding: 0.75em 0 0.6em;
-  font-family: "Archivo", sans-serif;
+  padding: 0 1rem;
   background: #222;
-  color: #ccc;
-  border: none;
+  color: #f2f2f2;
   text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-  box-shadow: inset 0 0 0 1px #000;
-  border: 1px solid #222;
+  font-size: 1.125rem;
+  height: 2.5em;
+  line-height: 2.5em;
+  font-family: inherit;
+  letter-spacing: 0.075em;
+  font-weight: 500;
+  box-shadow: inset 0 0 0 1px #ccc;
+  border: 1px solid #333;
 
   &:focus {
     background: #fff;
@@ -144,6 +145,7 @@ class AddForm extends Component<Props, State> {
 
     return (
       <Form onSubmit={this.handleSubmit}>
+        <h1 style={{marginTop: '0', fontSize: '2rem'}}>Add a book</h1>
         <InputGroup label="Title">
           <InputText
             type="text"
