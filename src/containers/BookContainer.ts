@@ -12,7 +12,20 @@ interface IBookState {
 const deleteProperty = ({ [key]: _, ...newObj }, key: string) => newObj;
 
 class BookContainer extends Container<IBookState> {
-  state = {
+  persistToLocalStorage = () => {
+    window.localStorage.setItem('books', JSON.stringify(this.state));
+  };
+
+  retrieveFromLocalStorage = () => {
+    const data = window.localStorage.getItem('books');
+    if (data && typeof data === 'string') {
+      return JSON.parse(data);
+    }
+
+    return false;
+  };
+
+  state = this.retrieveFromLocalStorage() || {
     byId: {},
     allIds: []
   };
@@ -23,14 +36,14 @@ class BookContainer extends Container<IBookState> {
     this.setState(state => ({
       allIds: [...state.allIds, id],
       byId: Object.assign(state.byId, { [id]: { id: id, ...book } })
-    }));
+    })).then(this.persistToLocalStorage);
   };
 
   removeBook = (bookId: string) => {
     this.setState(state => ({
       allIds: state.allIds.filter(id => bookId !== id),
       byId: deleteProperty(state.byId, bookId)
-    }));
+    })).then(this.persistToLocalStorage);
   };
 }
 
