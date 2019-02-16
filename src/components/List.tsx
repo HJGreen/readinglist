@@ -60,13 +60,13 @@ const List: React.FunctionComponent<ListProps> = ({
 
   if (!entries.length) {
     return (
-      <section style={{ textAlign: "center" }}>
+      <section style={{ textAlign: "center", margin: '2rem 0' }}>
         <img src={bookshelf} width="120" />
         <ListEmptyState>Your shelf is empty</ListEmptyState>
         <p>
           Add some books using
           <br />
-          the <strong>Search</strong> page below
+          the <strong>Search</strong> button below
         </p>
       </section>
     );
