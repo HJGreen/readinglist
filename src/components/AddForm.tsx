@@ -5,7 +5,7 @@ import { Book } from "../model/Book";
 
 const Form = styled.form`
   background: #f2f2f2;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -145,7 +145,7 @@ class AddForm extends Component<Props, State> {
 
     return (
       <Form onSubmit={this.handleSubmit}>
-        <h1 style={{marginTop: '0', fontSize: '2rem'}}>Add a book</h1>
+        <h1 style={{ margin: "0 0 0.5em", fontSize: "4rem" }}>Search</h1>
         <InputGroup label="Title">
           <InputText
             type="text"

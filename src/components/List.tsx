@@ -31,7 +31,8 @@ const StyledListItem = styled.li`
   justify-content: space-between;
   align-items: center;
 `;
-const Button = styled.button`
+
+const IconButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,9 +40,8 @@ const Button = styled.button`
   color: #f2f2f2;
   text-transform: uppercase;
   font-size: 1rem;
-  height: 2em;
-  width: 2em;
-  line-height: 2.5em;
+  height: 2.5rem;
+  width: 2.5rem;
   font-family: inherit;
   letter-spacing: 0.075em;
   font-weight: 500;
@@ -56,7 +56,6 @@ const Button = styled.button`
   }
 `;
 
-
 type ListItemProps = {
   title: string;
   author: string;
@@ -69,15 +68,24 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
   onClick
 }) => (
   <StyledListItem>
-      <div>
-    <ListTitle>{title}</ListTitle>
-    <ListSubTitle>{author}</ListSubTitle>
-      </div>
-    <Button type="button" onClick={onClick}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path fill="currentColor" d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z"/>
-        </svg>
-    </Button>
+    <div>
+      <ListTitle>{title}</ListTitle>
+      <ListSubTitle>{author}</ListSubTitle>
+    </div>
+
+    <IconButton type="button" onClick={onClick}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="32"
+        height="32"
+      >
+        <path
+          fill="currentColor"
+          d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z"
+        />
+      </svg>
+    </IconButton>
   </StyledListItem>
 );
 
@@ -85,6 +93,7 @@ type ListProps = {
   items: Object;
   removeListItem: (id: string) => void;
 };
+
 const List: React.FunctionComponent<ListProps> = ({
   items,
   removeListItem
@@ -93,7 +102,7 @@ const List: React.FunctionComponent<ListProps> = ({
 
   if (!entries.length) {
     return (
-      <section style={{ textAlign: "center", margin: '2rem 0' }}>
+      <section style={{ textAlign: "center", margin: "2rem 0" }}>
         <img src={bookshelf} width="120" />
         <ListEmptyState>Your shelf is empty</ListEmptyState>
         <p>
