@@ -9,7 +9,7 @@ const ListEmptyState = styled.h2`
 
 const ListContainer = styled.ul`
   list-style: none;
-  padding: 0 1rem;
+  padding: 0;
   margin: 0;
 `;
 

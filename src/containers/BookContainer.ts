@@ -13,12 +13,12 @@ const deleteProperty = ({ [key]: _, ...newObj }, key: string) => newObj;
 
 class BookContainer extends Container<IBookState> {
   persistToLocalStorage = () => {
-    window.localStorage.setItem('books', JSON.stringify(this.state));
+    window.localStorage.setItem("books", JSON.stringify(this.state));
   };
 
   retrieveFromLocalStorage = () => {
-    const data = window.localStorage.getItem('books');
-    if (data && typeof data === 'string') {
+    const data = window.localStorage.getItem("books");
+    if (data && typeof data === "string") {
       return JSON.parse(data);
     }
 
@@ -30,10 +30,10 @@ class BookContainer extends Container<IBookState> {
     allIds: []
   };
 
-  addBook = (book: Book) => {
+  addBook = async (book: Book): Promise<any> => {
     const id = book.id || uuidv1();
 
-    this.setState(state => ({
+    await this.setState(state => ({
       allIds: [...state.allIds, id],
       byId: Object.assign(state.byId, { [id]: { id: id, ...book } })
     })).then(this.persistToLocalStorage);

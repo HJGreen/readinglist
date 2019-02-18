@@ -5,6 +5,7 @@ import BookContainer from "./containers/BookContainer";
 import Navigation from "./components/Navigation";
 import List from "./components/List";
 import AddForm from "./components/AddForm";
+import AddBook from "./components/AddBook";
 import AppContainer from "./components/AppContainer";
 import Pane from "./components/Pane";
 
@@ -22,11 +23,7 @@ const App: React.FunctionComponent = () => (
               </Subscribe>
             </Route>
             <Route exact path="/add">
-              <Subscribe to={[BookContainer]}>
-                {({ addBook }: BookContainer) => (
-                  <AddForm addNewBook={addBook} />
-                )}
-              </Subscribe>
+              <AddBook />
             </Route>
           </Switch>
         </Pane>
