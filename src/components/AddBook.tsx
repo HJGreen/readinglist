@@ -6,6 +6,11 @@ import BookContainer from "../containers/BookContainer";
 import { Field, Label } from "./formik";
 import Button from "./Button";
 
+type ErrorsType = {
+  author?: string | null;
+  title?: string | null;
+};
+
 const AddBook = () => {
   const [hasSubmitted, updateSubmitted] = useState(false);
 
@@ -28,6 +33,19 @@ const AddBook = () => {
                 }
               );
             }}
+            validate={values => {
+              let errors: ErrorsType = {};
+
+              if (!values.author) {
+                errors.author = "Required";
+              }
+
+              if (!values.title) {
+                errors.title = "Required";
+              }
+
+              return errors;
+            }}
           >
             {({ isSubmitting }) => (
               <Form>
@@ -38,7 +56,7 @@ const AddBook = () => {
                 </Label>
                 <Label>
                   Author
-                  <ErrorMessage name="author" component="div" />
+                  <ErrorMessage name="author" component="span" />
                   <Field type="text" name="author" />
                 </Label>
                 <Button type="submit" disabled={isSubmitting}>

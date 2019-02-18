@@ -9,6 +9,10 @@ const Label = styled.label`
   letter-spacing: 0.075em;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
+
+  span {
+    color: hsl(10, 50%, 50%);
+  }
 `;
 
 export { Label };
