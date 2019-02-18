@@ -4,7 +4,6 @@ import { Provider, Subscribe } from "unstated";
 import BookContainer from "./containers/BookContainer";
 import Navigation from "./components/Navigation";
 import List from "./components/List";
-import AddForm from "./components/AddForm";
 import AddBook from "./components/AddBook";
 import AppContainer from "./components/AppContainer";
 import Pane from "./components/Pane";
