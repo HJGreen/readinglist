@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import bookshelf from "../img/book-shelf.png";
 
@@ -26,13 +27,17 @@ const ListSubTitle = styled.p`
 `;
 
 const StyledListItem = styled.li`
-  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ddd;
-  padding: 0.75rem 1rem;
 `;
+
+const ListLink = styled(Link)`
+  padding: 0.75rem 1rem;
+  color: inherit;
+  text-decoration: none;
+`
 
 const IconButton = styled.button`
   display: flex;
@@ -59,21 +64,23 @@ const IconButton = styled.button`
 `;
 
 type ListItemProps = {
+  id: string;
   title: string;
   author: string;
   onClick: (event: React.MouseEvent<any, MouseEvent>) => void;
 };
 
 const ListItem: React.FunctionComponent<ListItemProps> = ({
+  id,
   title,
   author,
   onClick
 }) => (
   <StyledListItem>
-    <div>
+    <ListLink to={`/book/${id}`}>
       <ListTitle>{title}</ListTitle>
       <ListSubTitle>{author}</ListSubTitle>
-    </div>
+    </ListLink>
 
     {/* <IconButton type="button" onClick={onClick}>
       <svg
