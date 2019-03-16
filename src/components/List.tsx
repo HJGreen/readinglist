@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import bookshelf from "../img/book-shelf.png";
 
@@ -16,12 +16,12 @@ const ListContainer = styled.ul`
 
 const ListTitle = styled.p`
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.125rem;
   margin: 0;
 `;
 
 const ListSubTitle = styled.p`
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 400;
   margin: 0;
 `;
@@ -37,7 +37,7 @@ const ListLink = styled(Link)`
   padding: 0.75rem 1rem;
   color: inherit;
   text-decoration: none;
-`
+`;
 
 const IconButton = styled.button`
   display: flex;

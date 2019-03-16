@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider, Subscribe } from "unstated";
 import BookContainer from "./containers/BookContainer";
 import Navigation from "./components/Navigation";
@@ -26,7 +22,7 @@ const App: React.FunctionComponent = () => (
                 )}
               </Subscribe>
             </Route>
-            <Route path="/book/:id" component={SingleBook}/>
+            <Route path="/book/:id" component={SingleBook} />
             <Route exact path="/add">
               <AddBook />
             </Route>
