@@ -15,12 +15,12 @@ const ListContainer = styled.ul`
 
 const ListTitle = styled.p`
   font-weight: 600;
-  font-size: 1.25rem;
-  margin: 0 0 0.15rem;
+  font-size: 1rem;
+  margin: 0;
 `;
 
 const ListSubTitle = styled.p`
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 400;
   margin: 0;
 `;
@@ -30,6 +30,8 @@ const StyledListItem = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 0.75rem 1rem;
 `;
 
 const IconButton = styled.button`
@@ -73,7 +75,7 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
       <ListSubTitle>{author}</ListSubTitle>
     </div>
 
-    <IconButton type="button" onClick={onClick}>
+    {/* <IconButton type="button" onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -85,7 +87,7 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
           d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z"
         />
       </svg>
-    </IconButton>
+    </IconButton> */}
   </StyledListItem>
 );
 

@@ -21,7 +21,7 @@ const AddBook = () => {
   return (
     <Subscribe to={[BookContainer]}>
       {({ addBook }: BookContainer) => (
-        <>
+        <section style={{padding: "0.75rem 1rem" }}>
           <h1 style={{ margin: "0 0 0.5em", fontSize: "4rem" }}>Search</h1>
           <Formik
             initialValues={{ title: "", author: "" }}
@@ -65,7 +65,7 @@ const AddBook = () => {
               </Form>
             )}
           </Formik>
-        </>
+        </section>
       )}
     </Subscribe>
   );
