@@ -28,7 +28,7 @@ const ListSubTitle = styled.p`
 `;
 
 const StyledListItem = styled.li`
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,21 +69,31 @@ const ListMeta = styled.section`
   flex-direction: column;
   flex: 0 0 auto;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid hsl(0, 0%, 90%);
 `;
 
 const FilterField = styled.input`
-  background: #e5e5e5;
+  background: hsl(0, 0%, 90%);
   border: none;
-  color: #222;
-  padding: 0.5rem 1rem;
+  color: hsl(0, 0%, 12%);
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
   font-size: 0.875rem;
   font-family: inherit;
   flex: 1;
   border-radius: 6px;
 
+  background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path class="heroicon-ui" fill="%23a6a6a6" d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: 0.75rem 50%;
+
   &:focus {
     outline: none;
+  }
+
+  &::placeholder {
+    //98 94 90 82 65 47 31 20 12
+    color: hsl(0, 0%, 47%);
   }
 `;
 
