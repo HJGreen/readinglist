@@ -67,6 +67,7 @@ const IconButton = styled.button`
 const ListMeta = styled.section`
   display: flex;
   flex-direction: column;
+  flex: 0 0 auto;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #ddd;
 `;
