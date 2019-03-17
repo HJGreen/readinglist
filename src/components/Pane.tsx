@@ -5,8 +5,7 @@ const Pane = styled.section`
   flex-direction: column;
   flex: 0 0 auto;
   overflow-y: auto;
-  background:
-    linear-gradient(#f2f2f2 30%, rgba(255, 255, 255, 0)),
+  background: linear-gradient(#f2f2f2 30%, rgba(255, 255, 255, 0)),
     linear-gradient(rgba(255, 255, 255, 0), #f2f2f2 70%) 0 100%,
     radial-gradient(
       farthest-side at 50% 0,
@@ -17,7 +16,8 @@ const Pane = styled.section`
         farthest-side at 50% 100%,
         rgba(24, 24, 24, 0.1),
         rgba(24, 24, 24, 0)
-    ) 0 100%;
+      )
+      0 100%;
   background-repeat: no-repeat;
   background-color: #f2f2f2;
   background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;

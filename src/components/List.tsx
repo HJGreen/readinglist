@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import bookshelf from "../img/book-shelf.png";
+import { Field } from "./formik";
 
 const ListEmptyState = styled.h2`
   text-align: center;
@@ -59,6 +60,28 @@ const IconButton = styled.button`
     background: #fff;
     color: #333;
     border-color: #fff;
+    outline: none;
+  }
+`;
+
+const ListMeta = styled.section`
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+`;
+
+const FilterField = styled.input`
+  background: #e5e5e5;
+  border: none;
+  color: #222;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  flex: 1;
+  border-radius: 6px;
+
+  &:focus {
     outline: none;
   }
 `;
@@ -123,18 +146,39 @@ const List: React.FunctionComponent<ListProps> = ({
     );
   }
 
+  const [searchQuery, updateSearchQuery] = useState("");
+
   return (
-    <ListContainer>
-      {entries.map(item => (
-        <ListItem
-          key={item[0]}
-          onClick={() => {
-            removeListItem(item[0]);
-          }}
-          {...item[1]}
+    <>
+      <ListMeta>
+        <FilterField
+          type="text"
+          defaultValue={searchQuery}
+          onChange={e => updateSearchQuery(e.currentTarget.value)}
+          placeholder="Search books"
         />
-      ))}
-    </ListContainer>
+        <span style={{ fontSize: "0.875rem", marginTop: "0.75rem" }}>
+          {entries.length} books
+        </span>
+      </ListMeta>
+      <ListContainer>
+        {entries
+          .filter(
+            ([key, book]) =>
+              book.title.includes(searchQuery) ||
+              book.author.includes(searchQuery)
+          )
+          .map(([key, book]) => (
+            <ListItem
+              key={key}
+              onClick={() => {
+                removeListItem(key);
+              }}
+              {...book}
+            />
+          ))}
+      </ListContainer>
+    </>
   );
 };
 
