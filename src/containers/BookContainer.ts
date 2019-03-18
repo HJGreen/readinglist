@@ -1,6 +1,6 @@
 import { Container } from "unstated";
 import uuidv1 from "uuid";
-import { Book } from "../model/Book";
+import { Book, BookUpdate } from "../model/Book";
 
 interface IBookState {
   byId: {
@@ -37,6 +37,12 @@ class BookContainer extends Container<IBookState> {
       allIds: [...state.allIds, id],
       byId: Object.assign(state.byId, { [id]: { id: id, ...book } })
     })).then(this.persistToLocalStorage);
+  };
+
+  updateBook = async (id: string, book: BookUpdate): Promise<any> => {
+    await this.setState(state => ({
+      byId: Object.assign(state.byId, { [id]: { ...state.byId[id], ...book } })
+    }));
   };
 
   removeBook = (bookId: string) => {

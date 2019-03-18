@@ -2,7 +2,8 @@ import { Field } from "formik";
 import styled from "styled-components";
 
 const StyledField = styled(Field)`
-  &[type="text"] {
+  &[type="text"],
+  &[type="date"] {
     background: none;
     border: none;
     border-bottom: 1px solid #999;
