@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import bookshelf from "../img/book-shelf.png";
-import { Field } from "./formik";
 
 const ListEmptyState = styled.h2`
   text-align: center;
@@ -25,6 +24,7 @@ const ListSubTitle = styled.p`
   font-size: 0.875rem;
   font-weight: 400;
   margin: 0;
+  color: hsl(0, 0%, 47%);
 `;
 
 const StyledListItem = styled.li`
