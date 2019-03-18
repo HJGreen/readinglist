@@ -179,6 +179,9 @@ const List: React.FunctionComponent<ListProps> = ({
               book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
               book.author.toLowerCase().includes(searchQuery.toLowerCase())
           )
+          .sort((a, b) => {
+            return a[1].dateRead < b[1].dateRead ? 1 : -1;
+          })
           .map(([key, book]) => (
             <ListItem
               key={key}
