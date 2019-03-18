@@ -42,7 +42,7 @@ class BookContainer extends Container<IBookState> {
   updateBook = async (id: string, book: BookUpdate): Promise<any> => {
     await this.setState(state => ({
       byId: Object.assign(state.byId, { [id]: { ...state.byId[id], ...book } })
-    }));
+    })).then(this.persistToLocalStorage);
   };
 
   removeBook = (bookId: string) => {
