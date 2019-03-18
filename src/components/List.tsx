@@ -176,8 +176,8 @@ const List: React.FunctionComponent<ListProps> = ({
         {entries
           .filter(
             ([key, book]) =>
-              book.title.includes(searchQuery) ||
-              book.author.includes(searchQuery)
+              book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              book.author.toLowerCase().includes(searchQuery.toLowerCase())
           )
           .map(([key, book]) => (
             <ListItem
