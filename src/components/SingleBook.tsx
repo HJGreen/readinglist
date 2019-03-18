@@ -29,7 +29,9 @@ const SingleBook = function({ match }: SingleBookType) {
                 });
               }}
               initialValues={{
-                dateRead: new Date(dateRead).toISOString().substr(0, 10)
+                dateRead: dateRead
+                  ? new Date(dateRead).toISOString().substr(0, 10)
+                  : ""
               }}
             >
               {({ isSubmitting }) => (
