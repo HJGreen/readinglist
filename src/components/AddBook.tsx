@@ -21,7 +21,7 @@ const AddBook = () => {
   return (
     <Subscribe to={[BookContainer]}>
       {({ addBook }: BookContainer) => (
-        <section style={{padding: "0.75rem 1rem" }}>
+        <section style={{ padding: "0.75rem 1rem" }}>
           <h1 style={{ margin: "0 0 0.5em", fontSize: "4rem" }}>Search</h1>
           <Formik
             initialValues={{ title: "", author: "" }}
@@ -52,12 +52,12 @@ const AddBook = () => {
                 <Label>
                   Title
                   <ErrorMessage name="title" component="span" />
-                  <Field type="text" name="title" />
+                  <Field type="text" name="title" className="u-text-large" />
                 </Label>
                 <Label>
                   Author
                   <ErrorMessage name="author" component="span" />
-                  <Field type="text" name="author" />
+                  <Field type="text" name="author" className="u-text-large" />
                 </Label>
                 <Button type="submit" disabled={isSubmitting}>
                   Submit

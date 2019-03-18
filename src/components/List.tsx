@@ -175,7 +175,7 @@ const List: React.FunctionComponent<ListProps> = ({
       <ListContainer>
         {entries
           .filter(
-            ([key, book]) =>
+            ([, book]) =>
               book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
               book.author.toLowerCase().includes(searchQuery.toLowerCase())
           )

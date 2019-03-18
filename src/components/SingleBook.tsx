@@ -20,12 +20,13 @@ const SingleBook = function({ match }: SingleBookType) {
         const { id, title, author, dateRead } = state.byId[match.params.id];
         return (
           <section style={{ padding: "0.75rem 1rem" }}>
-            <h1>{title}</h1>
+            <h1 style={{ fontSize: "1.125rem", fontWeight: 600 }}>{title}</h1>
             <p>{author}</p>
             <Formik
-              onSubmit={(values, { setSubmitting }) => {
+              onSubmit={(values, { setSubmitting, resetForm }) => {
                 updateBook(id, { dateRead: values.dateRead }).then(() => {
                   setSubmitting(false);
+                  resetForm();
                 });
               }}
               initialValues={{
@@ -34,15 +35,17 @@ const SingleBook = function({ match }: SingleBookType) {
                   : ""
               }}
             >
-              {({ isSubmitting }) => (
+              {({ isSubmitting, dirty }) => (
                 <Form>
                   <Label>
                     Date Read
                     <Field type="date" name="dateRead" />
                   </Label>
-                  <Button type="submit" disabled={isSubmitting}>
-                    Save
-                  </Button>
+                  {dirty && (
+                    <Button type="submit" disabled={isSubmitting}>
+                      Save Changes
+                    </Button>
+                  )}
                 </Form>
               )}
             </Formik>

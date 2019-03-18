@@ -5,7 +5,7 @@ const Button = styled.button`
   background: #222;
   color: #f2f2f2;
   text-transform: uppercase;
-  font-size: 1.125rem;
+  font-size: 0.75rem;
   height: 2.5em;
   line-height: 2.5em;
   font-family: inherit;
@@ -23,6 +23,10 @@ const Button = styled.button`
 
   &:disabled {
     opacity: 0.6;
+  }
+
+  &.u-text-large {
+    font-size: 1.125rem;
   }
 `;
 
