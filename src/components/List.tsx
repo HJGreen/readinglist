@@ -39,7 +39,7 @@ const ListLink = styled(Link)`
   padding: 0.75rem 1rem;
   color: inherit;
   text-decoration: none;
-  flex: 1 0 auto;
+  flex: 1 1 100%;
 `;
 
 const ListMeta = styled.section`

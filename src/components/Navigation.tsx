@@ -6,17 +6,17 @@ const Item = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
   text-decoration: none;
   color: inherit;
   text-align: center;
-  padding: 0px 24px;
-  height: 2.5rem;
-  font-size: 10px;
+  padding: 0 24px;
+  height: 3rem;
+  font-size: 12px;
 
   svg {
-    flex: 0 0 24px;
-    margin-bottom: 4px;
+    flex: 0 0 1.75rem;
+    width: 1.75rem;
   }
 `;
 
