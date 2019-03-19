@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-const Item = styled(Link)`
+const Item = styled(NavLink)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +13,11 @@ const Item = styled(Link)`
   padding: 0.5rem 1.5rem;
   height: 2.5rem;
   font-size: 10px;
+  opacity: 0.5;
+
+  &.is-active {
+    opacity: 1;
+  }
 
   svg {
     flex: 0 0 auto;
@@ -29,7 +34,7 @@ const Icon = ({
   icon: string;
 }) => {
   return (
-    <Item to={to}>
+    <Item to={to} activeClassName="is-active" exact={true}>
       {icon == "search" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
