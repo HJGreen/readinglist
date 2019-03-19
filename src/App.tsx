@@ -27,8 +27,14 @@ const App: React.FunctionComponent = () => (
           </Switch>
         </Pane>
         <Navigation>
-          <Navigation.Item to="/">Shelf</Navigation.Item>
-          <Navigation.Button to="/add">Search</Navigation.Button>
+          <Navigation.Icon to="/" icon="menu">
+            Shelf
+          </Navigation.Icon>
+          <Navigation.Icon to="/add" icon="search">
+            Search
+          </Navigation.Icon>
+          {/* <Navigation.Item to="/">Shelf</Navigation.Item> */}
+          {/* <Navigation.Button to="/add">Search</Navigation.Button> */}
         </Navigation>
       </AppContainer>
     </Router>

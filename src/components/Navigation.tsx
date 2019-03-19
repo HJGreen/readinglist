@@ -3,16 +3,58 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Item = styled(Link)`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   text-decoration: none;
   color: inherit;
   text-align: center;
-  padding: 8px 24px;
-  height: 2.5em;
-  line-height: 2.5em;
-  margin-left: 12px;
-  font-size: 18px;
+  padding: 0px 24px;
+  height: 2.5rem;
+  font-size: 10px;
+
+  svg {
+    flex: 0 0 24px;
+    margin-bottom: 4px;
+  }
 `;
+
+const Icon = ({
+  to,
+  children,
+  icon
+}: {
+  to: string;
+  children: any;
+  icon: string;
+}) => {
+  return (
+    <Item to={to}>
+      {icon == "search" && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+        >
+          <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+        </svg>
+      )}
+      {icon == "menu" && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+        >
+          <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+        </svg>
+      )}
+      <span>{children}</span>
+    </Item>
+  );
+};
 
 const Button = styled(Item)`
   color: white;
@@ -23,7 +65,7 @@ const Button = styled(Item)`
 const NavigationList = styled.ul`
   display: flex;
   flex: 1 0 auto;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: flex-end;
   list-style: none;
   margin: 0;
@@ -34,6 +76,7 @@ type NavigationProps = {};
 class Navigation extends React.Component<NavigationProps> {
   static Button = Button;
   static Item = Item;
+  static Icon = Icon;
 
   render() {
     return (
