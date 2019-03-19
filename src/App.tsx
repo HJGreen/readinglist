@@ -17,9 +17,7 @@ const App: React.FunctionComponent = () => (
           <Switch>
             <Route exact path="/">
               <Subscribe to={[BookContainer]}>
-                {({ state, removeBook }: BookContainer) => (
-                  <List items={state.byId} removeListItem={removeBook} />
-                )}
+                {({ state }: BookContainer) => <List items={state.byId} />}
               </Subscribe>
             </Route>
             <Route path="/book/:id" component={SingleBook} />

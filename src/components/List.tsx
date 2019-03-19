@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import bookshelf from "../img/book-shelf.png";
+import { Book } from "../model/Book";
 
 const ListEmptyState = styled.h2`
   text-align: center;
@@ -38,30 +39,7 @@ const ListLink = styled(Link)`
   padding: 0.75rem 1rem;
   color: inherit;
   text-decoration: none;
-`;
-
-const IconButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #222;
-  color: #f2f2f2;
-  text-transform: uppercase;
-  font-size: 1rem;
-  height: 2.5rem;
-  width: 2.5rem;
-  font-family: inherit;
-  letter-spacing: 0.075em;
-  font-weight: 500;
-  box-shadow: inset 0 0 0 1px #ccc;
-  border: 1px solid #333;
-
-  &:focus {
-    background: #fff;
-    color: #333;
-    border-color: #fff;
-    outline: none;
-  }
+  flex: 1 0 auto;
 `;
 
 const ListMeta = styled.section`
@@ -97,51 +75,27 @@ const FilterField = styled.input`
   }
 `;
 
-type ListItemProps = {
-  id: string;
-  title: string;
-  author: string;
-  onClick: (event: React.MouseEvent<any, MouseEvent>) => void;
-};
+type ListItemProps = Book;
 
 const ListItem: React.FunctionComponent<ListItemProps> = ({
   id,
   title,
-  author,
-  onClick
+  author
 }) => (
   <StyledListItem>
     <ListLink to={`/book/${id}`}>
       <ListTitle>{title}</ListTitle>
       <ListSubTitle>{author}</ListSubTitle>
     </ListLink>
-
-    {/* <IconButton type="button" onClick={onClick}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        width="32"
-        height="32"
-      >
-        <path
-          fill="currentColor"
-          d="M16.24 14.83a1 1 0 0 1-1.41 1.41L12 13.41l-2.83 2.83a1 1 0 0 1-1.41-1.41L10.59 12 7.76 9.17a1 1 0 0 1 1.41-1.41L12 10.59l2.83-2.83a1 1 0 0 1 1.41 1.41L13.41 12l2.83 2.83z"
-        />
-      </svg>
-    </IconButton> */}
   </StyledListItem>
 );
 
 type ListProps = {
-  items: Object;
-  removeListItem: (id: string) => void;
+  items: Map<String, Book>;
 };
 
-const List: React.FunctionComponent<ListProps> = ({
-  items,
-  removeListItem
-}) => {
-  let entries = Object.entries(items);
+const List: React.FunctionComponent<ListProps> = ({ items }) => {
+  let entries: [string, Book][] = Object.entries(items);
 
   if (!entries.length) {
     return (
@@ -179,17 +133,11 @@ const List: React.FunctionComponent<ListProps> = ({
               book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
               book.author.toLowerCase().includes(searchQuery.toLowerCase())
           )
-          .sort((a, b) => {
-            return a[1].dateRead < b[1].dateRead ? 1 : -1;
+          .sort(([_a, a], [_b, b]) => {
+            return (a.dateRead || 0) < (b.dateRead || 0) ? 1 : -1;
           })
           .map(([key, book]) => (
-            <ListItem
-              key={key}
-              onClick={() => {
-                removeListItem(key);
-              }}
-              {...book}
-            />
+            <ListItem key={key} {...book} />
           ))}
       </ListContainer>
     </>

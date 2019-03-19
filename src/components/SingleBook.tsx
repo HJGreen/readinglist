@@ -4,6 +4,7 @@ import BookContainer from "../containers/BookContainer";
 import { Label, Field } from "./formik";
 import { Formik, Form } from "formik";
 import Button from "./Button";
+import { Redirect } from "react-router";
 
 type SingleBookType = {
   match: {
@@ -16,7 +17,10 @@ type SingleBookType = {
 const SingleBook = function({ match }: SingleBookType) {
   return (
     <Subscribe to={[BookContainer]}>
-      {({ state, updateBook }: BookContainer) => {
+      {({ state, updateBook, removeBook }: BookContainer) => {
+        if (!state.byId[match.params.id]) {
+          return <Redirect to="/" />;
+        }
         const { id, title, author, dateRead } = state.byId[match.params.id];
         return (
           <section style={{ padding: "0.75rem 1rem" }}>
@@ -49,6 +53,9 @@ const SingleBook = function({ match }: SingleBookType) {
                 </Form>
               )}
             </Formik>
+            <Button type="button" onClick={() => removeBook(match.params.id)}>
+              Delete
+            </Button>
           </section>
         );
       }}
