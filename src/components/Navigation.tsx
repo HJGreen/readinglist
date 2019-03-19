@@ -6,17 +6,16 @@ const Item = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   text-decoration: none;
   color: inherit;
   text-align: center;
-  padding: 0 24px;
-  height: 3rem;
-  font-size: 12px;
+  padding: 0.5rem 1.5rem;
+  height: 2.5rem;
+  font-size: 10px;
 
   svg {
-    flex: 0 0 1.75rem;
-    width: 1.75rem;
+    flex: 0 0 auto;
   }
 `;
 
@@ -69,7 +68,7 @@ const NavigationList = styled.ul`
   align-items: flex-end;
   list-style: none;
   margin: 0;
-  padding: 4px;
+  padding: 0;
 `;
 
 type NavigationProps = {};

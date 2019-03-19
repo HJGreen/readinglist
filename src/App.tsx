@@ -33,8 +33,6 @@ const App: React.FunctionComponent = () => (
           <Navigation.Icon to="/add" icon="search">
             Search
           </Navigation.Icon>
-          {/* <Navigation.Item to="/">Shelf</Navigation.Item> */}
-          {/* <Navigation.Button to="/add">Search</Navigation.Button> */}
         </Navigation>
       </AppContainer>
     </Router>
