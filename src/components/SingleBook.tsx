@@ -19,7 +19,7 @@ const SingleBook = function({ match }: SingleBookType) {
     <Subscribe to={[BookContainer]}>
       {({ state, updateBook, removeBook }: BookContainer) => {
         if (!state.byId[match.params.id]) {
-          return <Redirect to="/" />;
+          return <Redirect to="/books" />;
         }
         const { id, title, author, dateRead } = state.byId[match.params.id];
         return (

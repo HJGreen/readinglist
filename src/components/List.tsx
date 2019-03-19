@@ -83,7 +83,7 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
   author
 }) => (
   <StyledListItem>
-    <ListLink to={`/book/${id}`}>
+    <ListLink to={`/books/${id}`}>
       <ListTitle>{title}</ListTitle>
       <ListSubTitle>{author}</ListSubTitle>
     </ListLink>

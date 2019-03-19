@@ -34,18 +34,18 @@ const Icon = ({
   icon: string;
 }) => {
   return (
-    <Item to={to} activeClassName="is-active" exact={true}>
+    <Item to={to} activeClassName="is-active">
       {icon == "shelf" && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
           width="24"
           height="24"
-          viewBox="0 0 24 24"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2zm12 2H6v4h12V4zm0 12H6v4h12v-4zM6 10h12v4H6v-4z"
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M18 3H6c-1.1 0-2 .9-2 2v14h16V5a2 2 0 0 0-2-2zM6 5h12v3H6V5zm12 5H6v3h12v-3zm0 5H6v3h12v-3zM5 21a1 1 0 0 0 1-1h12a1 1 0 1 0 2 0v-1H4v1a1 1 0 0 0 1 1z"
           />
         </svg>
       )}

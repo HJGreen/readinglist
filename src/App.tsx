@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import { Provider, Subscribe } from "unstated";
 import BookContainer from "./containers/BookContainer";
 import Navigation from "./components/Navigation";
@@ -16,24 +21,27 @@ const App: React.FunctionComponent = () => (
         <Pane>
           <Switch>
             <Route exact path="/">
+              <Redirect to="/books" />
+            </Route>
+            <Route exact path="/books">
               <Subscribe to={[BookContainer]}>
                 {({ state }: BookContainer) => <List items={state.byId} />}
               </Subscribe>
             </Route>
-            <Route path="/book/:id" component={SingleBook} />
+            <Route path="/books/:id" component={SingleBook} />
             <Route exact path="/add">
               <AddBook />
             </Route>
           </Switch>
         </Pane>
         <Navigation>
-          <Navigation.Icon to="/" icon="shelf">
+          <Navigation.Icon to="/books" icon="shelf">
             Shelf
           </Navigation.Icon>
           <Navigation.Icon to="/add" icon="search">
             Search
           </Navigation.Icon>
-          <Navigation.Icon to="/" icon="menu">
+          <Navigation.Icon to="/more" icon="menu">
             More
           </Navigation.Icon>
         </Navigation>
