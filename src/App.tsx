@@ -27,11 +27,14 @@ const App: React.FunctionComponent = () => (
           </Switch>
         </Pane>
         <Navigation>
-          <Navigation.Icon to="/" icon="menu">
+          <Navigation.Icon to="/" icon="shelf">
             Shelf
           </Navigation.Icon>
           <Navigation.Icon to="/add" icon="search">
             Search
+          </Navigation.Icon>
+          <Navigation.Icon to="/" icon="menu">
+            More
           </Navigation.Icon>
         </Navigation>
       </AppContainer>
