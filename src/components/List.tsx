@@ -76,7 +76,7 @@ const FilterField = styled.input`
   background: hsl(0, 0%, 90%);
   border: none;
   color: hsl(0, 0%, 12%);
-  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
   font-size: 0.875rem;
   font-family: inherit;
   flex: 1;
