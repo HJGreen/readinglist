@@ -38,8 +38,8 @@ const App: React.FunctionComponent = () => (
           <Navigation.Icon to="/books" icon="shelf">
             Shelf
           </Navigation.Icon>
-          <Navigation.Icon to="/add" icon="search">
-            Search
+          <Navigation.Icon to="/add" icon="plus">
+            Add
           </Navigation.Icon>
           <Navigation.Icon to="/more" icon="menu">
             More

@@ -22,7 +22,7 @@ const AddBook = () => {
     <Subscribe to={[BookContainer]}>
       {({ addBook }: BookContainer) => (
         <section style={{ padding: "0.75rem 1rem" }}>
-          <h1 style={{ margin: "0 0 0.5em", fontSize: "3rem" }}>Search</h1>
+          <h1 style={{ margin: "0 0 0.5em" }}>Add a new book</h1>
           <Formik
             initialValues={{
               title: "",
@@ -74,7 +74,11 @@ const AddBook = () => {
                   Date Read
                   <Field type="date" name="dateRead" />
                 </Label>
-                <Button type="submit" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="u-block u-text-large"
+                >
                   Add to Shelf
                 </Button>
               </Form>

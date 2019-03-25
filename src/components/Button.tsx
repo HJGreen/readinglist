@@ -26,7 +26,12 @@ const Button = styled.button`
   }
 
   &.u-text-large {
-    font-size: 1.125rem;
+    font-size: 1rem;
+  }
+
+  &.u-block {
+    display: block;
+    width: 100%;
   }
 `;
 
