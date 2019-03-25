@@ -22,16 +22,22 @@ const AddBook = () => {
     <Subscribe to={[BookContainer]}>
       {({ addBook }: BookContainer) => (
         <section style={{ padding: "0.75rem 1rem" }}>
-          <h1 style={{ margin: "0 0 0.5em", fontSize: "4rem" }}>Search</h1>
+          <h1 style={{ margin: "0 0 0.5em", fontSize: "3rem" }}>Search</h1>
           <Formik
-            initialValues={{ title: "", author: "" }}
+            initialValues={{
+              title: "",
+              author: "",
+              dateRead: new Date().toISOString().substr(0, 10)
+            }}
             onSubmit={(values, { setSubmitting }) => {
-              addBook({ author: values.author, title: values.title }).then(
-                () => {
-                  setSubmitting(false);
-                  updateSubmitted(true);
-                }
-              );
+              addBook({
+                author: values.author,
+                title: values.title,
+                dateRead: values.dateRead
+              }).then(() => {
+                setSubmitting(false);
+                updateSubmitted(true);
+              });
             }}
             validate={values => {
               let errors: ErrorsType = {};
@@ -52,15 +58,24 @@ const AddBook = () => {
                 <Label>
                   Title
                   <ErrorMessage name="title" component="span" />
-                  <Field type="text" name="title" className="u-text-large" />
+                  <Field
+                    type="text"
+                    name="title"
+                    className="u-text-large"
+                    autoFocus
+                  />
                 </Label>
                 <Label>
                   Author
                   <ErrorMessage name="author" component="span" />
                   <Field type="text" name="author" className="u-text-large" />
                 </Label>
+                <Label>
+                  Date Read
+                  <Field type="date" name="dateRead" />
+                </Label>
                 <Button type="submit" disabled={isSubmitting}>
-                  Submit
+                  Add to Shelf
                 </Button>
               </Form>
             )}

@@ -5,7 +5,7 @@ const Button = styled.button`
   background: #222;
   color: #f2f2f2;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   height: 2.5em;
   line-height: 2.5em;
   font-family: inherit;
