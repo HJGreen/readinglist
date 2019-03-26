@@ -13,6 +13,7 @@ import AddBook from "./components/AddBook";
 import AppContainer from "./components/AppContainer";
 import Pane from "./components/Pane";
 import SingleBook from "./components/SingleBook";
+import Statistics from "./components/Statistics";
 
 const App: React.FunctionComponent = () => (
   <Provider>
@@ -32,6 +33,7 @@ const App: React.FunctionComponent = () => (
             <Route exact path="/add">
               <AddBook />
             </Route>
+            <Route exact path="/stats" component={Statistics} />
           </Switch>
         </Pane>
         <Navigation>
@@ -41,8 +43,8 @@ const App: React.FunctionComponent = () => (
           <Navigation.Icon to="/add" icon="plus">
             Add
           </Navigation.Icon>
-          <Navigation.Icon to="/more" icon="menu">
-            More
+          <Navigation.Icon to="/stats" icon="stats">
+            Stats
           </Navigation.Icon>
         </Navigation>
       </AppContainer>
