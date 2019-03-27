@@ -14,7 +14,7 @@ type SingleBookType = {
   };
 };
 
-const SingleBook = function({ match }: SingleBookType) {
+const SingleBook = function ({ match }: SingleBookType) {
   return (
     <Subscribe to={[BookContainer]}>
       {({ state, updateBook, removeBook }: BookContainer) => {
