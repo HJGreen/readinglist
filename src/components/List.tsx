@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { compareDesc } from "date-fns";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import bookshelf from "../img/book-shelf.png";
@@ -133,8 +134,12 @@ const List: React.FunctionComponent<ListProps> = ({ items }) => {
               book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
               book.author.toLowerCase().includes(searchQuery.toLowerCase())
           )
+          .reverse()
           .sort(([_a, a], [_b, b]) => {
-            return (a.dateRead || 0) < (b.dateRead || 0) ? 1 : -1;
+            return compareDesc(
+              new Date(a.dateRead || 0),
+              new Date(b.dateRead || 0)
+            );
           })
           .map(([key, book]) => (
             <ListItem key={key} {...book} />
