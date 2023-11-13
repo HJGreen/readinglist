@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react";
+import React, { ChangeEvent, useState } from "react";
 import { compareDesc } from "date-fns";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -81,7 +81,7 @@ type ListItemProps = Book;
 const ListItem: React.FunctionComponent<ListItemProps> = ({
   id,
   title,
-  author
+  author,
 }) => (
   <StyledListItem>
     <ListLink to={`/books/${id}`}>
@@ -120,7 +120,9 @@ const List: React.FunctionComponent<ListProps> = ({ items }) => {
         <FilterField
           type="text"
           defaultValue={searchQuery}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => updateSearchQuery(e.currentTarget.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            updateSearchQuery(e.currentTarget.value)
+          }
           placeholder="Search books"
         />
         <span style={{ fontSize: "0.875rem", marginTop: "0.75rem" }}>
@@ -132,13 +134,13 @@ const List: React.FunctionComponent<ListProps> = ({ items }) => {
           .filter(
             ([, book]) =>
               book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              book.author.toLowerCase().includes(searchQuery.toLowerCase())
+              book.author.toLowerCase().includes(searchQuery.toLowerCase()),
           )
           .reverse()
           .sort(([_a, a], [_b, b]) => {
             return compareDesc(
               new Date(a.dateRead || 0),
-              new Date(b.dateRead || 0)
+              new Date(b.dateRead || 0),
             );
           })
           .map(([key, book]) => (

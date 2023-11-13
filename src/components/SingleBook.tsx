@@ -36,7 +36,7 @@ const SingleBook = function ({ match }: SingleBookType) {
               initialValues={{
                 dateRead: dateRead
                   ? new Date(dateRead).toISOString().substr(0, 10)
-                  : ""
+                  : "",
               }}
             >
               {({ isSubmitting, dirty }) => (

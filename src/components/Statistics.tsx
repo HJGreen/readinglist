@@ -11,10 +11,8 @@ const Statistics = () => {
         const bookCount = books.length;
         let uniqueAuthors = new Set();
 
-        books.forEach(
-          (book) => uniqueAuthors.add(book.author),
-        );
-        
+        books.forEach((book) => uniqueAuthors.add(book.author));
+
         const authorCount = uniqueAuthors.size;
         const mostRecent = books.reduce((mostRecent, book) => {
           if (

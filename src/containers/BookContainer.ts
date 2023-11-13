@@ -1,5 +1,5 @@
 import { Container } from "unstated";
-import {nanoid} from "nanoid";
+import { nanoid } from "nanoid";
 import { Book, BookUpdate } from "../model/Book";
 
 interface IBookState {
@@ -27,28 +27,28 @@ class BookContainer extends Container<IBookState> {
 
   state = this.retrieveFromLocalStorage() || {
     byId: {},
-    allIds: []
+    allIds: [],
   };
 
   addBook = async (book: Book): Promise<any> => {
     const id = book.id || nanoid();
 
-    await this.setState(state => ({
+    await this.setState((state) => ({
       allIds: [...state.allIds, id],
-      byId: Object.assign(state.byId, { [id]: { id: id, ...book } })
+      byId: Object.assign(state.byId, { [id]: { id: id, ...book } }),
     })).then(this.persistToLocalStorage);
   };
 
   updateBook = async (id: string, book: BookUpdate): Promise<any> => {
-    await this.setState(state => ({
-      byId: Object.assign(state.byId, { [id]: { ...state.byId[id], ...book } })
+    await this.setState((state) => ({
+      byId: Object.assign(state.byId, { [id]: { ...state.byId[id], ...book } }),
     })).then(this.persistToLocalStorage);
   };
 
   removeBook = (bookId: string) => {
-    this.setState(state => ({
-      allIds: state.allIds.filter(id => bookId !== id),
-      byId: deleteProperty(bookId ,state.byId)
+    this.setState((state) => ({
+      allIds: state.allIds.filter((id) => bookId !== id),
+      byId: deleteProperty(bookId, state.byId),
     })).then(this.persistToLocalStorage);
   };
 }
