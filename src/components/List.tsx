@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {ChangeEvent, useState} from "react";
 import { compareDesc } from "date-fns";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -120,7 +120,7 @@ const List: React.FunctionComponent<ListProps> = ({ items }) => {
         <FilterField
           type="text"
           defaultValue={searchQuery}
-          onChange={e => updateSearchQuery(e.currentTarget.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => updateSearchQuery(e.currentTarget.value)}
           placeholder="Search books"
         />
         <span style={{ fontSize: "0.875rem", marginTop: "0.75rem" }}>
