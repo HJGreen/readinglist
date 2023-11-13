@@ -9,10 +9,10 @@ const Statistics = () => {
       {({ state }: BookContainer) => {
         const books: Array<Book> = Object.values(state.byId);
         const bookCount = books.length;
-        const uniqueAuthors = books.reduce(
-          (authors: Set<string>, book) => authors.add(book.author),
-          new Set()
-        );
+        let uniqueAuthors = new Set();
+
+        books.forEach((book) => uniqueAuthors.add(book.author));
+
         const authorCount = uniqueAuthors.size;
         const mostRecent = books.reduce((mostRecent, book) => {
           if (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Subscribe } from "unstated";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
 import { Formik, Form, ErrorMessage } from "formik";
 import BookContainer from "../containers/BookContainer";
 import { Field, Label } from "./formik";
@@ -27,19 +27,19 @@ const AddBook = () => {
             initialValues={{
               title: "",
               author: "",
-              dateRead: new Date().toISOString().substr(0, 10)
+              dateRead: new Date().toISOString().substr(0, 10),
             }}
             onSubmit={(values, { setSubmitting }) => {
               addBook({
                 author: values.author,
                 title: values.title,
-                dateRead: values.dateRead
+                dateRead: values.dateRead,
               }).then(() => {
                 setSubmitting(false);
                 updateSubmitted(true);
               });
             }}
-            validate={values => {
+            validate={(values) => {
               let errors: ErrorsType = {};
 
               if (!values.author) {

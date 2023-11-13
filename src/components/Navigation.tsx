@@ -27,7 +27,7 @@ const Item = styled(NavLink)`
 const Icon = ({
   to,
   children,
-  icon
+  icon,
 }: {
   to: string;
   children: any;
@@ -120,7 +120,7 @@ class Navigation extends React.Component<NavigationProps> {
     return (
       <nav>
         <NavigationList>
-          {React.Children.map(this.props.children, child => (
+          {React.Children.map(this.props.children, (child) => (
             <li>{child}</li>
           ))}
         </NavigationList>

@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 import { Provider, Subscribe } from "unstated";
 import BookContainer from "./containers/BookContainer";

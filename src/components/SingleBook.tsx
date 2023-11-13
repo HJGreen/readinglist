@@ -4,7 +4,7 @@ import BookContainer from "../containers/BookContainer";
 import { Label, Field } from "./formik";
 import { Formik, Form } from "formik";
 import Button from "./Button";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
 
 type SingleBookType = {
   match: {
@@ -36,7 +36,7 @@ const SingleBook = function ({ match }: SingleBookType) {
               initialValues={{
                 dateRead: dateRead
                   ? new Date(dateRead).toISOString().substr(0, 10)
-                  : ""
+                  : "",
               }}
             >
               {({ isSubmitting, dirty }) => (
