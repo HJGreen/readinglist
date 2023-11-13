@@ -9,7 +9,7 @@ interface IBookState {
   allIds: string[];
 }
 
-const deleteProperty = ({ [key]: _, ...newObj }, key: string) => newObj;
+const deleteProperty = (key: string, { [key]: _, ...newObj }) => newObj;
 
 class BookContainer extends Container<IBookState> {
   persistToLocalStorage = () => {
@@ -18,7 +18,7 @@ class BookContainer extends Container<IBookState> {
 
   retrieveFromLocalStorage = () => {
     const data = window.localStorage.getItem("books");
-    if (data && typeof data === "string") {
+    if (data) {
       return JSON.parse(data);
     }
 
@@ -48,7 +48,7 @@ class BookContainer extends Container<IBookState> {
   removeBook = (bookId: string) => {
     this.setState(state => ({
       allIds: state.allIds.filter(id => bookId !== id),
-      byId: deleteProperty(state.byId, bookId)
+      byId: deleteProperty(bookId ,state.byId)
     })).then(this.persistToLocalStorage);
   };
 }

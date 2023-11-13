@@ -4,7 +4,7 @@ import BookContainer from "../containers/BookContainer";
 import { Label, Field } from "./formik";
 import { Formik, Form } from "formik";
 import Button from "./Button";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
 
 type SingleBookType = {
   match: {
