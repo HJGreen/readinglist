@@ -1,5 +1,5 @@
 import { Container } from "unstated";
-import uuidv1 from "uuid";
+import {nanoid} from "nanoid";
 import { Book, BookUpdate } from "../model/Book";
 
 interface IBookState {
@@ -31,7 +31,7 @@ class BookContainer extends Container<IBookState> {
   };
 
   addBook = async (book: Book): Promise<any> => {
-    const id = book.id || uuidv1();
+    const id = book.id || nanoid();
 
     await this.setState(state => ({
       allIds: [...state.allIds, id],
